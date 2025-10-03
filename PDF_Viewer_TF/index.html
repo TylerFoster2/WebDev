@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Gathering Form</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>The Important Questions</h1>
+        
+        <div class="method-selector">
+            <label>
+                <input type="checkbox" id="usePost" onchange="toggleMethod()"> 
+                Use POST, unchecked = GET
+            </label>
+        </div>
+
+        <form id="dataForm" action="viewer.php" method="GET">
+            <div class="form-group">
+                <label>Select the Montana ski resorts you like:</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="resorts[]" value="bigsky">
+                        Big Sky
+                    </label>
+                    <label>
+                        <input type="checkbox" name="resorts[]" value="whitefish">
+                        Whitefish
+                    </label>
+                    <label>
+                        <input type="checkbox" name="resorts[]" value="bridgerbowl">
+                        Bridger Bowl
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>How old is your car?</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="carAge" value="Newer">
+                        Newer (0-10 years)
+                    </label>
+                    <label>
+                        <input type="radio" name="carAge" value="KindaOld">
+                        Kinda Old (10-25 years)
+                    </label>
+                    <label>
+                        <input type="radio" name="carAge" value="Old">
+                        Old (25+ years)
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cookieType">Choose your favorite cookie:</label>
+                <select name="cookieType" id="cookieType">
+                    <option value="">None</option>
+                    <option value="chocolatechip">Chocolate Chip</option>
+                    <option value="oatmeal">Oatmeal</option>
+                    <option value="peanutbutter">Peanut Butter</option>
+                    <option value="sugar">Sugar</option>
+                    <option value="snickerdoodle">Snickerdoodle</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="iceCream">Select the ice cream flavors you like:</label>
+                <select name="iceCream[]" id="iceCream" multiple>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="mintchocolatechip">Mint Chocolate Chip</option>
+                    <option value="cookiesandcream">Cookies and Cream</option>
+                    <option value="rockyroad">Rocky Road</option>
+                    <option value="butterpecan">Butter Pecan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hungerValue">On a scale of 1-10, how hungry are you now?</label>
+                <input type="number" name="hungerValue" id="hungerValue" min="0" max="10" placeholder="1">
+            </div>
+
+            <div class="submit-group">
+                <input type="submit" value="Submit Form">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleMethod() {
+            const form = document.getElementById('dataForm');
+            const checkbox = document.getElementById('usePost');
+            
+            if (checkbox.checked) {
+                form.method = 'POST';
+            } else {
+                form.method = 'GET';
+            }
+        }
+    </script>
+</body>
+</html>
