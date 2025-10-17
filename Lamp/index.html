@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LAMP Demo</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        async function fetchUser() {
+            const res = await fetch('https://randomuser.me/api/');
+            const data = await res.json();
+            const user = data.results[0];
+            document.getElementById('apiData').innerHTML = `
+                <img class="user" src="${user.picture.large}" alt="User Picture">
+                <h2 class="user">${user.name.first} ${user.name.last}</h2>
+            `;
+            document.getElementById('first').value = user.name.first;
+            document.getElementById('last').value = user.name.last;
+            document.getElementById('country').value = user.location.country;
+            document.getElementById('email').value = user.email;
+            document.getElementById('username').value = user.login.username;
+        }
+        window.onload = fetchUser;
+    </script>
+</head>
+<body>
+    <h1>LAMP Demo: Random User</h1>
+    <div id="apiData"></div>
+    <div id="btns" style="display: flex; justify-content: center; gap: 1em; margin-top: 1em;">
+        <button type="button" onclick="fetchUser()">Get New User</button>
+        <form action="add.php" method="POST" style="margin: 0;">
+            <input type="hidden" id="first" name="first">
+            <input type="hidden" id="last" name="last">
+            <input type="hidden" id="country" name="country">
+            <input type="hidden" id="email" name="email">
+            <input type="hidden" id="username" name="username">
+            <button type="submit">Add User to Database</button>
+        </form>
+    </div>
+</body>
+</html>
