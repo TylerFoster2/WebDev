@@ -1,6 +1,16 @@
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Listing</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>Just Added</h1>
+    <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $firstname = isset($_POST['first']) ? htmlspecialchars($_POST['first']) : '';
         $lastname  = isset($_POST['last']) ? htmlspecialchars($_POST['last']) : '';
@@ -59,39 +69,6 @@
 
         $conn = null;
 
-    } else {
-        echo "<p>No data was submitted.</p>";
-    }
-
-            echo "<div>";
-            echo "<table>";
-            echo "<thead><tr><th>First Name</th><th>Last Name</th><th>Country</th><th>Email</th><th>Username</th></tr></thead><tbody>";
-
-            while ($row = $result->fetch()) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['first']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['last']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['country']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['username']) . "</td>";
-                echo "</tr>";
-            }
-
-            echo "</tbody></table>";
-            echo "</div>";
-
-        } catch (PDOException $e) {
-            // Log the error and show a friendly message
-            app_log('PDOException: ' . $e->getMessage());
-            echo '<p>Database error. The administrator has been notified.</p>';
-        }
-
-        // Close the connection
-        $conn = null;
-
-    } else {
-        echo "<p>No data was submitted.</p>";
-    }
     } else {
         echo "<p>No data was submitted.</p>";
     }
