@@ -1,11 +1,35 @@
 /* Base (mobile first) */
+.hero { padding: 1rem; background: #f7f7f7; border: 1px solid #eee; border-radius: .5rem; }
 
 .gallery {
   /* GRID LAYOUT HERE */
   display: grid;
+  grid-template-columns: 250px;
+  gap: 20px;
+  padding: 20px;
+  img {
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
+  
+  }
 }
 
 /* Tablet (≥601px) */
+@media (min-width: 601px) {
+  .gallery {
+    grid-template-columns: repeat(2, 250px);
+    gap: 20px;
+    padding: 20px;
+  }
+}
 
 
 /* Desktop (≥1025px) */
+@media (min-width: 1025px) {
+  .gallery {
+    grid-template-columns: repeat(3, 250px);
+    gap: 20px;
+    padding: 20px;
+  }
+}
