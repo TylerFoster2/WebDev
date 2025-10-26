@@ -1,0 +1,11 @@
+/* Base (mobile first) */
+
+.gallery {
+  /* GRID LAYOUT HERE */
+  display: grid;
+}
+
+/* Tablet (≥601px) */
+
+
+/* Desktop (≥1025px) */

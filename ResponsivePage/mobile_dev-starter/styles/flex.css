@@ -1,0 +1,12 @@
+/* Base (mobile first) */
+.hero { padding: 1rem; background: #f7f7f7; border: 1px solid #eee; border-radius: .5rem; }
+
+.cards {
+  /* FLEX LAYOUT HERE */
+  display: flex;
+}
+
+/* Tablet (≥601px) */
+
+/* Desktop (≥1025px) */
+
